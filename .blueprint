@@ -1,0 +1,35 @@
+created:
+    - database/migrations/2020_05_13_113027_create_settings_table.php
+    - database/migrations/2020_05_13_113028_create_projects_table.php
+    - database/migrations/2020_05_13_113029_create_tasks_table.php
+    - database/migrations/2020_05_13_113030_create_project_categories_table.php
+    - database/migrations/2020_05_13_113031_create_ideas_table.php
+    - database/migrations/2020_05_13_113032_create_interests_table.php
+    - app/Setting.php
+    - app/Project.php
+    - app/Task.php
+    - app/ProjectCategory.php
+    - app/Idea.php
+    - app/Interest.php
+    - database/factories/SettingFactory.php
+    - database/factories/ProjectFactory.php
+    - database/factories/TaskFactory.php
+    - database/factories/ProjectCategoryFactory.php
+    - database/factories/IdeaFactory.php
+    - database/factories/InterestFactory.php
+    - app/Http/Controllers/FrontController.php
+    - app/Http/Controllers/BackController.php
+    - app/Http/Controllers/AuthController.php
+    - tests/Feature/Http/Controllers/FrontControllerTest.php
+    - tests/Feature/Http/Controllers/BackControllerTest.php
+    - tests/Feature/Http/Controllers/AuthControllerTest.php
+updated:
+    - routes/web.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
+    Setting: { image: 'string:100', about: longtext, slug: 'string:100', facebook: 'string:200', linkedin: 'string:200', github: 'string:200', relationships: { belongsTo: User } }
+    Project: { name: 'string:100', link: 'string:200', description: longtext, youtube: 'string:200', incomes: longtext, outcomes: longtext, enddate: 'nullable timestamp', category_id: integer, relationships: { belongsTo: ProjectCategory } }
+    Task: { title: 'string:100', description: longtext, duration: integer, project_id: integer, relationships: { belongsTo: Project } }
+    ProjectCategory: { name: 'string:100', icon: 'string:200', tag: 'string:100' }
+    Idea: { title: 'string:100', description: longtext, project_category: integer, relationships: { belongsTo: ProjectCategory } }
+    Interest: { title: 'string:100', description: 'nullable longtext' }

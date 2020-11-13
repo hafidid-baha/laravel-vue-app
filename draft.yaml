@@ -1,0 +1,59 @@
+models:
+  Setting:
+    image: string:100
+    about: longtext
+    slug: string:100
+    facebook: string:200
+    linkedin: string:200
+    github: string:200
+    relationships:
+      belongsTo: User
+  Project:
+    name: string:100
+    link: string:200
+    description: longtext
+    youtube: string:200
+    incomes: longtext
+    outcomes: longtext
+    enddate: nullable timestamp
+    category_id : integer
+    relationships:
+      belongsTo: ProjectCategory
+  Task:
+    title: string:100
+    description: longtext
+    duration: integer
+    project_id: integer
+    relationships:
+      belongsTo: Project
+  ProjectCategory:
+    name: string:100
+    icon: string:200
+    tag: string:100
+  Idea:
+    title: string:100
+    description: longtext
+    project_category: integer
+    relationships:
+      belongsTo: ProjectCategory
+  Interest:
+    title: string:100
+    description: nullable longtext
+
+
+
+controllers:
+  Front:
+    index:
+        query: all
+        render: post.index with:posts
+  Back:
+    index:
+      query: all
+      render: post.index with:posts
+  Auth:
+    index:
+      query: all
+      render: post.index with:posts
+
+    
